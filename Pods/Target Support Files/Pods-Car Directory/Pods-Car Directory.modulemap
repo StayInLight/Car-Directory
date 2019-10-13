@@ -1,0 +1,6 @@
+framework module Pods_Car_Directory {
+  umbrella header "Pods-Car Directory-umbrella.h"
+
+  export *
+  module * { export * }
+}
