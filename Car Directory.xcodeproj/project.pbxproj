@@ -14,6 +14,7 @@
 		FA4C0A63234B8DD7007F8FA8 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C0A62234B8DD7007F8FA8 /* CarsListViewController.swift */; };
 		FA4C0A68234B8DD8007F8FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */; };
 		FA4C0A6B234B8DD8007F8FA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */; };
+		FA79422D2353A3710022FC63 /* AddDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */; };
 		FA8FD9FF234CDD8B000888C3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FA8FD9FE234CDD8B000888C3 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA4C0A6A234B8DD8007F8FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4C0A6C234B8DD8007F8FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsViewController.swift; sourceTree = "<group>"; };
 		FA8FD9FE234CDD8B000888C3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 			children = (
 				FA4C0A60234B8DD7007F8FA8 /* AppDelegate.swift */,
 				FA4C0A62234B8DD7007F8FA8 /* CarsListViewController.swift */,
+				FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */,
 				FA2851DC234D443B009FB287 /* CarCell.swift */,
 				FA3B906E234CC3C9009982BF /* Car.swift */,
 				FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA79422D2353A3710022FC63 /* AddDetailsViewController.swift in Sources */,
 				FA4C0A63234B8DD7007F8FA8 /* CarsListViewController.swift in Sources */,
 				FA4C0A61234B8DD7007F8FA8 /* AppDelegate.swift in Sources */,
 				FA3B906F234CC3CA009982BF /* Car.swift in Sources */,
