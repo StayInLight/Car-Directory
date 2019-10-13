@@ -26,30 +26,10 @@ class CarsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
         createCarArray()
         setupTableView()
-        configureNavigationBar()
-        self.tableView.delegate = self
-        tableView.register(CarCell.self, forCellReuseIdentifier: "CarCell")
-    }
-    
-    func configureNavigationBar() {
+        setupNavigationBar()
         
-        view.backgroundColor = UIColor.white
-        navigationItem.title = "Cars"
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-    }
-    
-    func setupTableView() {
-        
-        self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) -> Void in
-            make.edges.equalTo(self.view.safeAreaLayoutGuide)
-        }
-
     }
     
     func createCarArray() {
@@ -57,8 +37,6 @@ class CarsListViewController: UIViewController {
         cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
         cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
     }
-    
-
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -75,3 +53,27 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 }
+
+// MARK: - Setup
+extension CarsListViewController {
+    
+    func setupTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+
+        tableView.register(CarCell.self, forCellReuseIdentifier: "CarCell")
+        
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.title = "Cars"
+        navigationItem.rightBarButtonItem = addBarButtonItem
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+}
+
+
