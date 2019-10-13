@@ -9,10 +9,10 @@
 import UIKit
 import SnapKit
 
-class CarsListViewController: UIViewController {
+final class CarsListViewController: UIViewController {
     
-    let tableView = UITableView()
-    var cars = [Car]()
+    private let tableView = UITableView()
+    private var cars = [Car]()
     
     private lazy var addBarButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .add,
@@ -21,35 +21,36 @@ class CarsListViewController: UIViewController {
     }()
     
     @objc func addBarButtonTapped() {
-        
+        let addDetailsViewController = AddDetailsViewController()
+        self.present(addDetailsViewController, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createCarArray()
-        setupTableView()
-        setupNavigationBar()
+        self.createCarArray()
+        self.setupTableView()
+        self.setupNavigationBar()
         
     }
     
     func createCarArray() {
-        cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1994, model: "XC90", bodyType: "Sedan"))
-        cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
-        cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
+        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1994, model: "XC90", bodyType: "Sedan"))
+        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
+        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
     }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cars.count
+        return self.cars.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell", for: indexPath) as? CarCell else {
             fatalError("The cell is nil")
         }
-        cell.car = cars[indexPath.row]
+        cell.car = self.cars[indexPath.row]
         return cell
     }
 }
@@ -61,18 +62,19 @@ extension CarsListViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        tableView.register(CarCell.self, forCellReuseIdentifier: "CarCell")
+        self.tableView.register(CarCell.self, forCellReuseIdentifier: "CarCell")
         
         self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) -> Void in
+        self.tableView.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
     
     func setupNavigationBar() {
-        navigationItem.title = "Cars"
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        navigationController?.navigationBar.prefersLargeTitles = true
+        self.view.backgroundColor = UIColor.white
+        self.navigationItem.title = "Cars"
+        self.navigationItem.rightBarButtonItem = addBarButtonItem
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

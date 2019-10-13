@@ -15,10 +15,10 @@ final class CarCell: UITableViewCell {
     
     var car: Car? {
         didSet {
-            manufacturerLabel.text = car?.manufacturer
-            modelLabel.text = car?.model
-            yearOfReleaseLabel.text = String(car?.yearOfRelease ?? 0)
-            bodyTypeLabel.text = car?.bodyType
+            self.manufacturerLabel.text  = self.car?.manufacturer
+            self.modelLabel.text         = self.car?.model
+            self.yearOfReleaseLabel.text = String(self.car?.yearOfRelease ?? 0)
+            self.bodyTypeLabel.text      = self.car?.bodyType
         }
     }
 
@@ -56,45 +56,46 @@ final class CarCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
+        self.setupViews()
 
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupViews()
+        self.setupViews()
     }
 
 }
 
-extension CarCell {
+private extension CarCell {
 
-    fileprivate func setupViews() {
-        addSubview(manufacturerLabel)
-        addSubview(modelLabel)
-        addSubview(yearOfReleaseLabel)
-        addSubview(bodyTypeLabel)
+     func setupViews() {
+        self.addSubview(self.manufacturerLabel)
+        self.addSubview(self.modelLabel)
+        self.addSubview(self.yearOfReleaseLabel)
+        self.addSubview(self.bodyTypeLabel)
 
-        setupLabelsConstraints()
+        self.setupLabelsConstraints()
     }
 
-    fileprivate func setupLabelsConstraints() {
-        manufacturerLabel.snp.makeConstraints { (make) -> Void in
+    func setupLabelsConstraints() {
+        self.manufacturerLabel.snp.makeConstraints { (make) -> Void in
             make.top.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.trailing.equalTo(self.modelLabel.snp.leading).offset(-defaultOffset)
         }
-        yearOfReleaseLabel.snp.makeConstraints { (make) in
+        self.yearOfReleaseLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.right.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
         }
-        modelLabel.snp.makeConstraints { (make) -> Void in
+        self.modelLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.trailing.greaterThanOrEqualTo(self.yearOfReleaseLabel.snp.leading).offset(-defaultOffset)
         }
-        bodyTypeLabel.snp.makeConstraints { (make) in
+        self.bodyTypeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.top.equalTo(self.manufacturerLabel.snp.bottom).offset(defaultOffset / 2)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
         }
     }
+
 }
