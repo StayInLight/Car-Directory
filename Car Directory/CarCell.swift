@@ -23,7 +23,6 @@ final class CarCell: UITableViewCell {
     private let manufacturerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
         return label
     }()
@@ -31,7 +30,6 @@ final class CarCell: UITableViewCell {
     private let modelLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -40,15 +38,14 @@ final class CarCell: UITableViewCell {
     private let yearOfReleaseLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
+        label.textAlignment = .right
         label.numberOfLines = 0
         return label
     }()
     
     private let bodyTypeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .left
         label.numberOfLines = 0
