@@ -3,25 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D64DEC20ADFD16B9A9D92A9 /* Pods_Car_Directory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B6D969AC5EF7758E88E540 /* Pods_Car_Directory.framework */; };
+		FA2851DD234D443B009FB287 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2851DC234D443B009FB287 /* CarCell.swift */; };
+		FA3B906F234CC3CA009982BF /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B906E234CC3C9009982BF /* Car.swift */; };
 		FA4C0A61234B8DD7007F8FA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C0A60234B8DD7007F8FA8 /* AppDelegate.swift */; };
-		FA4C0A63234B8DD7007F8FA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C0A62234B8DD7007F8FA8 /* ViewController.swift */; };
-		FA4C0A66234B8DD7007F8FA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A64234B8DD7007F8FA8 /* Main.storyboard */; };
+		FA4C0A63234B8DD7007F8FA8 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C0A62234B8DD7007F8FA8 /* CarsListViewController.swift */; };
 		FA4C0A68234B8DD8007F8FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */; };
 		FA4C0A6B234B8DD8007F8FA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */; };
+		FA79422D2353A3710022FC63 /* AddDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */; };
+		FA8FD9FF234CDD8B000888C3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FA8FD9FE234CDD8B000888C3 /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12AF68E46573416D996567F1 /* Pods-Car Directory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Directory.debug.xcconfig"; path = "Target Support Files/Pods-Car Directory/Pods-Car Directory.debug.xcconfig"; sourceTree = "<group>"; };
+		7095901AF5A6F00257D78BFF /* Pods-Car Directory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Directory.release.xcconfig"; path = "Target Support Files/Pods-Car Directory/Pods-Car Directory.release.xcconfig"; sourceTree = "<group>"; };
+		D5B6D969AC5EF7758E88E540 /* Pods_Car_Directory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Directory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2851DC234D443B009FB287 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		FA3B906E234CC3C9009982BF /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		FA4C0A5D234B8DD7007F8FA8 /* Car Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4C0A60234B8DD7007F8FA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA4C0A62234B8DD7007F8FA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FA4C0A65234B8DD7007F8FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA4C0A62234B8DD7007F8FA8 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
 		FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA4C0A6A234B8DD8007F8FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4C0A6C234B8DD8007F8FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsViewController.swift; sourceTree = "<group>"; };
+		FA8FD9FE234CDD8B000888C3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D64DEC20ADFD16B9A9D92A9 /* Pods_Car_Directory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		822C885EA65B7373D4212B75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5B6D969AC5EF7758E88E540 /* Pods_Car_Directory.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F145E1368938F83E61CB5952 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12AF68E46573416D996567F1 /* Pods-Car Directory.debug.xcconfig */,
+				7095901AF5A6F00257D78BFF /* Pods-Car Directory.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA4C0A54234B8DD7007F8FA8 = {
 			isa = PBXGroup;
 			children = (
+				FA8FD9FE234CDD8B000888C3 /* Podfile */,
 				FA4C0A5F234B8DD7007F8FA8 /* Car Directory */,
 				FA4C0A5E234B8DD7007F8FA8 /* Products */,
+				F145E1368938F83E61CB5952 /* Pods */,
+				822C885EA65B7373D4212B75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,8 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				FA4C0A60234B8DD7007F8FA8 /* AppDelegate.swift */,
-				FA4C0A62234B8DD7007F8FA8 /* ViewController.swift */,
-				FA4C0A64234B8DD7007F8FA8 /* Main.storyboard */,
+				FA4C0A62234B8DD7007F8FA8 /* CarsListViewController.swift */,
+				FA79422C2353A3710022FC63 /* AddDetailsViewController.swift */,
+				FA2851DC234D443B009FB287 /* CarCell.swift */,
+				FA3B906E234CC3C9009982BF /* Car.swift */,
 				FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */,
 				FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */,
 				FA4C0A6C234B8DD8007F8FA8 /* Info.plist */,
@@ -71,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA4C0A6F234B8DD8007F8FA8 /* Build configuration list for PBXNativeTarget "Car Directory" */;
 			buildPhases = (
+				4CC1E75C85091314C5A28023 /* [CP] Check Pods Manifest.lock */,
 				FA4C0A59234B8DD7007F8FA8 /* Sources */,
 				FA4C0A5A234B8DD7007F8FA8 /* Frameworks */,
 				FA4C0A5B234B8DD7007F8FA8 /* Resources */,
+				80B4B62908FD5E03565327B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,35 +157,72 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8FD9FF234CDD8B000888C3 /* Podfile in Resources */,
 				FA4C0A6B234B8DD8007F8FA8 /* LaunchScreen.storyboard in Resources */,
 				FA4C0A68234B8DD8007F8FA8 /* Assets.xcassets in Resources */,
-				FA4C0A66234B8DD7007F8FA8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CC1E75C85091314C5A28023 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Car Directory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80B4B62908FD5E03565327B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Car Directory/Pods-Car Directory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Car Directory/Pods-Car Directory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Car Directory/Pods-Car Directory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA4C0A59234B8DD7007F8FA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA4C0A63234B8DD7007F8FA8 /* ViewController.swift in Sources */,
+				FA79422D2353A3710022FC63 /* AddDetailsViewController.swift in Sources */,
+				FA4C0A63234B8DD7007F8FA8 /* CarsListViewController.swift in Sources */,
 				FA4C0A61234B8DD7007F8FA8 /* AppDelegate.swift in Sources */,
+				FA3B906F234CC3CA009982BF /* Car.swift in Sources */,
+				FA2851DD234D443B009FB287 /* CarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FA4C0A64234B8DD7007F8FA8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA4C0A65234B8DD7007F8FA8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,6 +352,7 @@
 		};
 		FA4C0A70234B8DD8007F8FA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12AF68E46573416D996567F1 /* Pods-Car Directory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +371,7 @@
 		};
 		FA4C0A71234B8DD8007F8FA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7095901AF5A6F00257D78BFF /* Pods-Car Directory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
