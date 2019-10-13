@@ -15,7 +15,9 @@ class CarsListViewController: UIViewController {
     var cars = [Car]()
     
     private lazy var addBarButtonItem: UIBarButtonItem = {
-        return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonTapped))
+        return UIBarButtonItem(barButtonSystemItem: .add,
+                               target: self,
+                               action: #selector(addBarButtonTapped))
     }()
     
     @objc func addBarButtonTapped() {
@@ -58,8 +60,8 @@ class CarsListViewController: UIViewController {
     
 
 }
-// MARK: - UITableViewDataSource, UITableViewDelegate
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cars.count
