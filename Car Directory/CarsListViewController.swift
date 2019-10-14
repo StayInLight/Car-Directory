@@ -22,7 +22,10 @@ final class CarsListViewController: UIViewController {
     
     @objc func addBarButtonTapped() {
         let addDetailsViewController = AddDetailsViewController()
-        self.present(addDetailsViewController, animated: true)
+        self.present(addDetailsViewController, animated: true) {
+//            guard let car = addDetailsViewController.car else { fatalError("Нет Car после закрытия AddDetailViewController") }
+//            self.cars.append(car)
+        }
     }
     
     override func viewDidLoad() {
@@ -47,7 +50,7 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell", for: indexPath) as? CarCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell", for: indexPath) as? CarTableViewCell else {
             fatalError("The cell is nil")
         }
         cell.car = self.cars[indexPath.row]
@@ -62,7 +65,7 @@ extension CarsListViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-        self.tableView.register(CarCell.self, forCellReuseIdentifier: "CarCell")
+        self.tableView.register(CarTableViewCell.self, forCellReuseIdentifier: "CarCell")
         
         self.view.addSubview(tableView)
         self.tableView.snp.makeConstraints { (make) -> Void in

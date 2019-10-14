@@ -7,11 +7,68 @@
 //
 
 import UIKit
+import SnapKit
 
 final class AddDetailsViewController: UIViewController {
+
+    var car: Car?
+
+    let manufacturerTextField: UITextField = {
+        let textField = UITextField()
+        textField.adjustsFontSizeToFitWidth = true
+        textField.placeholder = "Enter Manufacturer"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+
+    let yearOfReleaseTextField: UITextField = {
+        let textField = UITextField()
+        textField.adjustsFontSizeToFitWidth = true
+        textField.placeholder = "Enter Year of Release"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+
+    let modelTextField: UITextField = {
+        let textField = UITextField()
+        textField.adjustsFontSizeToFitWidth = true
+        textField.placeholder = "Enter Model"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
+
+    let bodyTypeTextField: UITextField = {
+        let textField = UITextField()
+        textField.adjustsFontSizeToFitWidth = true
+        textField.placeholder = "Enter Body Type"
+        textField.borderStyle = .roundedRect
+        return textField
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+
+        setupStackView()
     }
+
+}
+
+extension AddDetailsViewController {
+
+    fileprivate func setupStackView() {
+        let stackView = UIStackView(arrangedSubviews: [manufacturerTextField,
+                                                       yearOfReleaseTextField,
+                                                       modelTextField,
+                                                       bodyTypeTextField])
+        view.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 20
+
+        stackView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(view).inset(20)
+        }
+    }
+
 }
