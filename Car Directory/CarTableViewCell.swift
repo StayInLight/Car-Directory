@@ -9,9 +9,9 @@
 import UIKit
 import SnapKit
 
-private let defaultOffset = 8
+let defaultOffset = 8
 
-final class CarCell: UITableViewCell {
+final class CarTableViewCell: UITableViewCell {
     
     var car: Car? {
         didSet {
@@ -67,7 +67,7 @@ final class CarCell: UITableViewCell {
 
 }
 
-private extension CarCell {
+private extension CarTableViewCell {
 
      func setupViews() {
         self.addSubview(self.manufacturerLabel)
@@ -80,19 +80,20 @@ private extension CarCell {
 
     func setupLabelsConstraints() {
         self.manufacturerLabel.snp.makeConstraints { (make) -> Void in
-            make.top.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
+            make.left.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.trailing.equalTo(self.modelLabel.snp.leading).offset(-defaultOffset)
         }
         self.yearOfReleaseLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
-            make.right.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
+            make.right.equalTo(self.safeAreaLayoutGuide).offset(-20)
         }
         self.modelLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.trailing.greaterThanOrEqualTo(self.yearOfReleaseLabel.snp.leading).offset(-defaultOffset)
         }
         self.bodyTypeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
+            make.left.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.top.equalTo(self.manufacturerLabel.snp.bottom).offset(defaultOffset / 2)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
         }
