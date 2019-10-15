@@ -49,7 +49,12 @@ final class AddDetailsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
 
+        setupNavigationBar()
         setupStackView()
+    func setupNavigationBar() {
+        self.view.backgroundColor = UIColor.white
+        self.navigationItem.title = "Add Car"
+        self.navigationItem.rightBarButtonItem = doneBarButtonItem
     }
 
 }
