@@ -25,9 +25,9 @@ final class CarsListViewController: UIViewController {
     }()
     
     @objc func addBarButtonTapped() {
-        let addDetailsViewController = AddDetailsViewController()
-        self.present(UINavigationController(rootViewController: addDetailsViewController), animated: true) {
-            addDetailsViewController.completionHandler = { [weak self] car in
+        let addEditDetailsViewController = AddEditDetailsViewController()
+        self.present(UINavigationController(rootViewController: addEditDetailsViewController), animated: true) {
+            addEditDetailsViewController.completionHandler = { [weak self] car in
                 self?.cars.append(car)
             }
         }
@@ -54,11 +54,23 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .none
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let car = cars[indexPath.row]
+        let addEditDetailsViewController = AddEditDetailsViewController()
+        addEditDetailsViewController.car = car
+        let navigationController = UINavigationController(rootViewController: addEditDetailsViewController)
+        self.present(navigationController, animated: true) {
+            addEditDetailsViewController.completionHandler = { [weak self] car in
+                self?.cars.remove(at: indexPath.row)
+                self?.cars.insert(car, at: indexPath.row)
+            }
+        }
+    }
 }
 
-// MARK: - Setup
+// MARK: - Setup UI
 extension CarsListViewController {
-    
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -78,5 +90,4 @@ extension CarsListViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
-
 

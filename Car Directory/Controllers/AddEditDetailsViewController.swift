@@ -9,16 +9,16 @@
 import UIKit
 import SnapKit
 
-final class AddDetailsViewController: UIViewController {
+final class AddEditDetailsViewController: UIViewController {
 
-    var car = Car()
+    var car: Car?
     var completionHandler: ((Car) -> Void)?
 
     private lazy var doneBarButtonItem: UIBarButtonItem = {
            return UIBarButtonItem(barButtonSystemItem: .done,
                                   target: self,
                                   action: #selector(doneBarButtonTapped))
-       }()
+    }()
 
     private let manufacturerTextField: UITextField = {
         let textField = UITextField()
@@ -54,14 +54,25 @@ final class AddDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        if let car = self.car {
+            manufacturerTextField.text = car.manufacturer
+            yearOfReleaseTextField.text = "\(Int(car.yearOfRelease ?? 0))"
+            modelTextField.text = car.model
+            bodyTypeTextField.text = car.bodyType
+            completionHandler?(car)
+        }
+    }
 
-        setupNavigationBar()
-        setupStackView()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupNavigationBar()
+        self.setupStackView()
+        self.view.backgroundColor = .white
     }
 
     @objc
-    func doneBarButtonTapped() {
+    fileprivate func doneBarButtonTapped() {
+        var car = Car()
         car.manufacturer  = manufacturerTextField.text
         let yearOfRelease = yearOfReleaseTextField.text
         if let yearOfRelease = yearOfRelease {
@@ -73,7 +84,7 @@ final class AddDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    func setupNavigationBar() {
+    fileprivate func setupNavigationBar() {
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "Add Car"
         self.navigationItem.rightBarButtonItem = doneBarButtonItem
@@ -81,7 +92,7 @@ final class AddDetailsViewController: UIViewController {
 
 }
 
-extension AddDetailsViewController {
+extension AddEditDetailsViewController {
 
     fileprivate func setupStackView() {
         let stackView = UIStackView(arrangedSubviews: [manufacturerTextField,
