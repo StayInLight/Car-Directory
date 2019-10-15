@@ -67,7 +67,8 @@ extension AddDetailsViewController {
         stackView.spacing = 20
 
         stackView.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(view).inset(20)
+            make.left.topMargin.equalTo(20)
+            make.right.equalTo(-20)
         }
     }
 
