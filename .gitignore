@@ -75,3 +75,5 @@ fastlane/test_output
 # Jazzy docs
 docs/
 
+*.xcbkptlist
+Car Directory.xcworkspace/xcuserdata/macbook.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
