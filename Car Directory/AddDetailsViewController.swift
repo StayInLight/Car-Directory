@@ -11,9 +11,16 @@ import SnapKit
 
 final class AddDetailsViewController: UIViewController {
 
-    var car: Car?
+    var car = Car()
+    var completionHandler: ((Car) -> Void)?
 
-    let manufacturerTextField: UITextField = {
+    private lazy var doneBarButtonItem: UIBarButtonItem = {
+           return UIBarButtonItem(barButtonSystemItem: .done,
+                                  target: self,
+                                  action: #selector(doneBarButtonTapped))
+       }()
+
+    private let manufacturerTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
         textField.placeholder = "Enter Manufacturer"
@@ -21,7 +28,7 @@ final class AddDetailsViewController: UIViewController {
         return textField
     }()
 
-    let yearOfReleaseTextField: UITextField = {
+    private let yearOfReleaseTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
         textField.placeholder = "Enter Year of Release"
@@ -29,7 +36,7 @@ final class AddDetailsViewController: UIViewController {
         return textField
     }()
 
-    let modelTextField: UITextField = {
+    private let modelTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
         textField.placeholder = "Enter Model"
@@ -37,7 +44,7 @@ final class AddDetailsViewController: UIViewController {
         return textField
     }()
 
-    let bodyTypeTextField: UITextField = {
+    private let bodyTypeTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
         textField.placeholder = "Enter Body Type"
@@ -51,6 +58,21 @@ final class AddDetailsViewController: UIViewController {
 
         setupNavigationBar()
         setupStackView()
+    }
+
+    @objc
+    func doneBarButtonTapped() {
+        car.manufacturer  = manufacturerTextField.text
+        let yearOfRelease = yearOfReleaseTextField.text
+        if let yearOfRelease = yearOfRelease {
+            car.yearOfRelease = Int(yearOfRelease)
+        }
+        car.model = modelTextField.text
+        car.bodyType = bodyTypeTextField.text
+        completionHandler?(car)
+        dismiss(animated: true, completion: nil)
+    }
+
     func setupNavigationBar() {
         self.view.backgroundColor = UIColor.white
         self.navigationItem.title = "Add Car"

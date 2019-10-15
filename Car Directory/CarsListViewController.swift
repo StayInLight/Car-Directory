@@ -12,7 +12,11 @@ import SnapKit
 final class CarsListViewController: UIViewController {
     
     private let tableView = UITableView()
-    private var cars = [Car]()
+    private var cars = [Car]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     private lazy var addBarButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .add,
@@ -22,24 +26,17 @@ final class CarsListViewController: UIViewController {
     
     @objc func addBarButtonTapped() {
         let addDetailsViewController = AddDetailsViewController()
-        self.present(addDetailsViewController, animated: true) {
-//            guard let car = addDetailsViewController.car else { fatalError("Нет Car после закрытия AddDetailViewController") }
-//            self.cars.append(car)
+        self.present(UINavigationController(rootViewController: addDetailsViewController), animated: true) {
+            addDetailsViewController.completionHandler = { [weak self] car in
+                self?.cars.append(car)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.createCarArray()
         self.setupTableView()
         self.setupNavigationBar()
-        
-    }
-    
-    func createCarArray() {
-        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1994, model: "XC90", bodyType: "Sedan"))
-        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
-        self.cars.append(Car(manufacturer: "Volvo", yearOfRelease: 1995, model: "XC90", bodyType: "Sedan"))
     }
 }
 
@@ -54,6 +51,7 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("The cell is nil")
         }
         cell.car = self.cars[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
 }
