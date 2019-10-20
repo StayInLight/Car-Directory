@@ -8,7 +8,7 @@
 - [x] Интрефейс создается в коде с помощью ([SnapKit](https://github.com/SnapKit/SnapKit)).
 - [x] Данные сохраняются с помощью ([Realm](https://github.com/realm/realm-cocoa))
 
-## Screenshots
+## Скриншоты
 <p align="center">
   <img src="https://user-images.githubusercontent.com/36644693/67160735-79f2b200-f35c-11e9-9faf-b8ba0863ae9f.png" width="24%">
   <img src="https://user-images.githubusercontent.com/36644693/67160671-1b2d3880-f35c-11e9-95ab-c907dc34a76e.png" width="24%">
