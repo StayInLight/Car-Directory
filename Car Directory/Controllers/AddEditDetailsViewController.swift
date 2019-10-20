@@ -8,18 +8,25 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class AddEditDetailsViewController: UIViewController {
-
+    
     var car: Car?
-    var completionHandler: ((Car) -> Void)?
-
-    private lazy var doneBarButtonItem: UIBarButtonItem = {
-           return UIBarButtonItem(barButtonSystemItem: .done,
-                                  target: self,
-                                  action: #selector(doneBarButtonTapped))
+    var completionHandler: (() -> Void)?
+    
+    private lazy var saveBarButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .save,
+                               target: self,
+                               action: #selector(saveBarButtonTapped))
     }()
-
+    
+    private lazy var deleteBarButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .trash,
+                               target: self,
+                               action: #selector(deleteBarButtonTapped))
+    }()
+    
     private let manufacturerTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
@@ -27,7 +34,7 @@ final class AddEditDetailsViewController: UIViewController {
         textField.borderStyle = .roundedRect
         return textField
     }()
-
+    
     private let yearOfReleaseTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
@@ -35,7 +42,7 @@ final class AddEditDetailsViewController: UIViewController {
         textField.borderStyle = .roundedRect
         return textField
     }()
-
+    
     private let modelTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
@@ -43,7 +50,7 @@ final class AddEditDetailsViewController: UIViewController {
         textField.borderStyle = .roundedRect
         return textField
     }()
-
+    
     private let bodyTypeTextField: UITextField = {
         let textField = UITextField()
         textField.adjustsFontSizeToFitWidth = true
@@ -51,18 +58,14 @@ final class AddEditDetailsViewController: UIViewController {
         textField.borderStyle = .roundedRect
         return textField
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let car = self.car {
-            manufacturerTextField.text = car.manufacturer
-            yearOfReleaseTextField.text = "\(Int(car.yearOfRelease ?? 0))"
-            modelTextField.text = car.model
-            bodyTypeTextField.text = car.bodyType
-            completionHandler?(car)
+            self.fetchDataFromModel(car)
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBar()
@@ -70,31 +73,75 @@ final class AddEditDetailsViewController: UIViewController {
         self.view.backgroundColor = .white
     }
 
-    @objc
-    fileprivate func doneBarButtonTapped() {
-        var car = Car()
-        car.manufacturer  = manufacturerTextField.text
-        let yearOfRelease = yearOfReleaseTextField.text
-        if let yearOfRelease = yearOfRelease {
-            car.yearOfRelease = Int(yearOfRelease)
-        }
-        car.model = modelTextField.text
-        car.bodyType = bodyTypeTextField.text
-        completionHandler?(car)
-        dismiss(animated: true, completion: nil)
-    }
-
-    fileprivate func setupNavigationBar() {
-        self.view.backgroundColor = UIColor.white
-        self.navigationItem.title = "Add Car"
-        self.navigationItem.rightBarButtonItem = doneBarButtonItem
-    }
-
 }
 
-extension AddEditDetailsViewController {
+// MARK: - Buttons Actions
+private extension AddEditDetailsViewController {
+    @objc
+    func saveBarButtonTapped() {
+        let car = Car()
+        if textFieldsNotEmpty() {
+            self.addDataToModel(car)
+            dismiss(animated: true)
+        } else {
+            self.showAlertTextFieldsAreEmpty()
+        }
+    }
 
-    fileprivate func setupStackView() {
+    @objc
+    func deleteBarButtonTapped() {
+        self.car?.delete()
+        self.completionHandler?()
+        dismiss(animated: true)
+    }
+}
+
+// MARK: - Actions
+private extension AddEditDetailsViewController {
+
+    func textFieldsNotEmpty() -> Bool {
+        guard
+            let manufacturerText = self.manufacturerTextField.text?.isEmpty,
+            let yearOfReleaseText = self.yearOfReleaseTextField.text?.isEmpty,
+            let modelText = self.modelTextField.text?.isEmpty,
+            let bodyTypeText = self.bodyTypeTextField.text?.isEmpty
+            else {
+                fatalError("Text is nil")
+        }
+        return !manufacturerText && !yearOfReleaseText && !modelText && !bodyTypeText
+    }
+
+    func addDataToModel(_ car: Car) {
+        car.manufacturer  = self.manufacturerTextField.text
+        car.yearOfRelease = self.yearOfReleaseTextField.text
+        car.model = self.modelTextField.text
+        car.bodyType = self.bodyTypeTextField.text
+        Car.add(car)
+        self.completionHandler?()
+    }
+
+    func fetchDataFromModel(_ car: Car) {
+        self.manufacturerTextField.text = car.manufacturer
+        self.yearOfReleaseTextField.text = car.yearOfRelease
+        self.modelTextField.text = car.model
+        self.bodyTypeTextField.text = car.bodyType
+    }
+
+    func showAlertTextFieldsAreEmpty() {
+        let alertController = UIAlertController(title: "Недостаточно данных",
+                                                message: "Заполните все оставшиеся поля",
+                                                preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true)
+    }
+}
+
+// MARK: - Setup UI
+private extension AddEditDetailsViewController {
+    
+    func setupStackView() {
+        let defaultSpacing: CGFloat = 20
         let stackView = UIStackView(arrangedSubviews: [manufacturerTextField,
                                                        yearOfReleaseTextField,
                                                        modelTextField,
@@ -102,12 +149,23 @@ extension AddEditDetailsViewController {
         view.addSubview(stackView)
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.spacing = 20
-
+        stackView.spacing = defaultSpacing
+        
         stackView.snp.makeConstraints { (make) in
-            make.left.topMargin.equalTo(20)
-            make.right.equalTo(-20)
+            make.left.topMargin.equalTo(defaultSpacing)
+            make.right.equalTo(-defaultSpacing)
         }
     }
 
+    func setupNavigationBar() {
+        self.view.backgroundColor = .white
+        if car != nil {
+            self.navigationItem.title = "Edit Car"
+            self.navigationItem.leftBarButtonItem = deleteBarButtonItem
+        } else {
+            self.navigationItem.title = "Add Car"
+        }
+        self.navigationItem.rightBarButtonItem = saveBarButtonItem
+    }
+    
 }
