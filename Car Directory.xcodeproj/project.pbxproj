@@ -15,6 +15,7 @@
 		FA4C0A68234B8DD8007F8FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A67234B8DD8007F8FA8 /* Assets.xcassets */; };
 		FA4C0A6B234B8DD8007F8FA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */; };
 		FA79422D2353A3710022FC63 /* AddEditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79422C2353A3710022FC63 /* AddEditDetailsViewController.swift */; };
+		FA794236235C9B7C0022FC63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA794235235C9B7C0022FC63 /* TextField.swift */; };
 		FA8FD9FF234CDD8B000888C3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FA8FD9FE234CDD8B000888C3 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		FA4C0A6A234B8DD8007F8FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4C0A6C234B8DD8007F8FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA79422C2353A3710022FC63 /* AddEditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDetailsViewController.swift; sourceTree = "<group>"; };
+		FA794235235C9B7C0022FC63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		FA8FD9FE234CDD8B000888C3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 		FA4C0A5F234B8DD7007F8FA8 /* Car Directory */ = {
 			isa = PBXGroup;
 			children = (
+				FA794234235C9B4E0022FC63 /* Views */,
 				FA7942302355B9C60022FC63 /* Controllers */,
 				FA7942322355B9D70022FC63 /* Cells */,
 				FA7942312355B9D10022FC63 /* Models */,
@@ -127,6 +130,14 @@
 				FA4C0A6C234B8DD8007F8FA8 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FA794234235C9B4E0022FC63 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA794235235C9B7C0022FC63 /* TextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +258,7 @@
 				FA79422D2353A3710022FC63 /* AddEditDetailsViewController.swift in Sources */,
 				FA4C0A63234B8DD7007F8FA8 /* CarsListViewController.swift in Sources */,
 				FA4C0A61234B8DD7007F8FA8 /* AppDelegate.swift in Sources */,
+				FA794236235C9B7C0022FC63 /* TextField.swift in Sources */,
 				FA3B906F234CC3CA009982BF /* Car.swift in Sources */,
 				FA2851DD234D443B009FB287 /* CarTableViewCell.swift in Sources */,
 			);

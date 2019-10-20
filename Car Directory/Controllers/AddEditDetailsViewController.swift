@@ -27,37 +27,10 @@ final class AddEditDetailsViewController: UIViewController {
                                action: #selector(deleteBarButtonTapped))
     }()
     
-    private let manufacturerTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Manufacturer"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let yearOfReleaseTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Year of Release"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let modelTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Model"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let bodyTypeTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Body Type"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    private let manufacturerTextField = TextField(placeholder: "Enter Manufacturer")
+    private let yearOfReleaseTextField = TextField(placeholder: "Enter Year of Release")
+    private let modelTextField = TextField(placeholder: "Enter Model")
+    private let bodyTypeTextField = TextField(placeholder: "Enter Body Type")
     
     override func viewDidLoad() {
         super.viewDidLoad()
