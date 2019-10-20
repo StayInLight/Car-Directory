@@ -16,6 +16,7 @@
 		FA4C0A6B234B8DD8007F8FA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C0A69234B8DD8007F8FA8 /* LaunchScreen.storyboard */; };
 		FA79422D2353A3710022FC63 /* AddEditDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA79422C2353A3710022FC63 /* AddEditDetailsViewController.swift */; };
 		FA794236235C9B7C0022FC63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA794235235C9B7C0022FC63 /* TextField.swift */; };
+		FA794238235C9D5E0022FC63 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA794237235C9D5E0022FC63 /* Label.swift */; };
 		FA8FD9FF234CDD8B000888C3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = FA8FD9FE234CDD8B000888C3 /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		FA4C0A6C234B8DD8007F8FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA79422C2353A3710022FC63 /* AddEditDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditDetailsViewController.swift; sourceTree = "<group>"; };
 		FA794235235C9B7C0022FC63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		FA794237235C9D5E0022FC63 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		FA8FD9FE234CDD8B000888C3 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				FA794235235C9B7C0022FC63 /* TextField.swift */,
+				FA794237235C9D5E0022FC63 /* Label.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				FA4C0A61234B8DD7007F8FA8 /* AppDelegate.swift in Sources */,
 				FA794236235C9B7C0022FC63 /* TextField.swift in Sources */,
 				FA3B906F234CC3CA009982BF /* Car.swift in Sources */,
+				FA794238235C9D5E0022FC63 /* Label.swift in Sources */,
 				FA2851DD234D443B009FB287 /* CarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

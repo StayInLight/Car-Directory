@@ -20,30 +20,13 @@ final class CarTableViewCell: UITableViewCell {
         }
     }
 
-    private let manufacturerLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private let modelLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private let yearOfReleaseLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .right
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private let bodyTypeLabel: UILabel = {
-        let label = UILabel()
+    private let manufacturerLabel = Label()
+    private let modelLabel = Label()
+    private let yearOfReleaseLabel = Label(textAlignment: .right)
+    private let bodyTypeLabel: Label = {
+        let label = Label()
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = 0
         return label
     }()
 
