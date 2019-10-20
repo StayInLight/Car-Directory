@@ -20,8 +20,8 @@
 Убедитесь, что у вас установлен Xcode из App Store. Затем введите следующие команды в терминале:
 
 ```sh
-clone https://github.com/StayInLight/Car-Directory.git
+git clone https://github.com/StayInLight/Car-Directory.git
 cd Car-Directory
 pod install
-open Car-Directory.xcworkspace
+open Car\ Directory.xcworkspace
 ```
