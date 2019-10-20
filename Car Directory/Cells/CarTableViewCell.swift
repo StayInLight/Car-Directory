@@ -10,13 +10,10 @@ import UIKit
 import SnapKit
 
 final class CarTableViewCell: UITableViewCell {
-    
+
     var car: Car? {
         didSet {
-            self.manufacturerLabel.text  = self.car?.manufacturer
-            self.modelLabel.text         = self.car?.model
-            self.yearOfReleaseLabel.text = self.car?.yearOfRelease
-            self.bodyTypeLabel.text      = self.car?.bodyType
+            self.updateText()
         }
     }
 
@@ -74,5 +71,15 @@ private extension CarTableViewCell {
             make.top.equalTo(self.manufacturerLabel.snp.bottom).offset(defaultOffset / 2)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
         }
+    }
+}
+
+// MARK: - Actions
+private extension CarTableViewCell {
+    func updateText() {
+        self.manufacturerLabel.text  = self.car?.manufacturer
+        self.modelLabel.text         = self.car?.model
+        self.yearOfReleaseLabel.text = self.car?.yearOfRelease
+        self.bodyTypeLabel.text      = self.car?.bodyType
     }
 }

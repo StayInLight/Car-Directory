@@ -35,7 +35,7 @@ final class AddEditDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let car = self.car {
-            self.fetchDataFromModel(car)
+            self.fetch(car)
         }
     }
     
@@ -54,7 +54,7 @@ private extension AddEditDetailsViewController {
     func saveBarButtonTapped() {
         let car = Car()
         if textFieldsNotEmpty() {
-            self.addDataToModel(car)
+            self.create(car)
             dismiss(animated: true)
         } else {
             self.showAlertTextFieldsAreEmpty()
@@ -84,7 +84,7 @@ private extension AddEditDetailsViewController {
         return !manufacturerText && !yearOfReleaseText && !modelText && !bodyTypeText
     }
 
-    func addDataToModel(_ car: Car) {
+    func create(_ car: Car) {
         car.manufacturer  = self.manufacturerTextField.text
         car.yearOfRelease = self.yearOfReleaseTextField.text
         car.model = self.modelTextField.text
@@ -93,7 +93,7 @@ private extension AddEditDetailsViewController {
         self.completionHandler?()
     }
 
-    func fetchDataFromModel(_ car: Car) {
+    func fetch(_ car: Car) {
         self.manufacturerTextField.text = car.manufacturer
         self.yearOfReleaseTextField.text = car.yearOfRelease
         self.modelTextField.text = car.model
