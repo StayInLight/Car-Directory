@@ -29,12 +29,7 @@ final class CarsListViewController: UIViewController {
     }
 
     @objc func addBarButtonTapped() {
-        let addEditDetailsViewController = AddEditDetailsViewController()
-        self.present(UINavigationController(rootViewController: addEditDetailsViewController), animated: true) {
-            addEditDetailsViewController.completionHandler = { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
+        self.addCar()
     }
 }
 
@@ -54,14 +49,7 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let car = cars?[indexPath.row]
-        let addEditDetailsViewController = AddEditDetailsViewController()
-        addEditDetailsViewController.car = car
-        let navigationController = UINavigationController(rootViewController: addEditDetailsViewController)
-        self.present(navigationController, animated: true) {
-            addEditDetailsViewController.completionHandler = { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
+        self.edit(car)
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -76,7 +64,7 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - Setup UI
-extension CarsListViewController {
+private extension CarsListViewController {
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -94,5 +82,28 @@ extension CarsListViewController {
         self.navigationItem.title = "Cars"
         self.navigationItem.rightBarButtonItem = addBarButtonItem
         self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+}
+
+// MARK: - Actions
+private extension CarsListViewController {
+    func addCar() {
+        let addEditDetailsViewController = AddEditDetailsViewController()
+        self.present(UINavigationController(rootViewController: addEditDetailsViewController), animated: true) {
+            addEditDetailsViewController.completionHandler = { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    func edit(_ car: Car?) {
+        let addEditDetailsViewController = AddEditDetailsViewController()
+        addEditDetailsViewController.car = car
+        let navigationController = UINavigationController(rootViewController: addEditDetailsViewController)
+        self.present(navigationController, animated: true) {
+            addEditDetailsViewController.completionHandler = { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
 }
