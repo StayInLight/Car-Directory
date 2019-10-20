@@ -8,64 +8,70 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class CarsListViewController: UIViewController {
     
     private let tableView = UITableView()
-    private var cars = [Car]() {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    private var cars: Results<Car>? 
     
     private lazy var addBarButtonItem: UIBarButtonItem = {
         return UIBarButtonItem(barButtonSystemItem: .add,
                                target: self,
                                action: #selector(addBarButtonTapped))
     }()
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.cars = Car.all()
+        self.setupTableView()
+        self.setupNavigationBar()
+    }
+
     @objc func addBarButtonTapped() {
         let addEditDetailsViewController = AddEditDetailsViewController()
         self.present(UINavigationController(rootViewController: addEditDetailsViewController), animated: true) {
-            addEditDetailsViewController.completionHandler = { [weak self] car in
-                self?.cars.append(car)
+            addEditDetailsViewController.completionHandler = { [weak self] in
+                self?.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupTableView()
-        self.setupNavigationBar()
     }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cars.count
+        return self.cars?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarCell", for: indexPath) as? CarTableViewCell else {
             fatalError("The cell is nil")
         }
-        cell.car = self.cars[indexPath.row]
-        cell.selectionStyle = .none
+        cell.car = self.cars?[indexPath.row]
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let car = cars[indexPath.row]
+        let car = cars?[indexPath.row]
         let addEditDetailsViewController = AddEditDetailsViewController()
         addEditDetailsViewController.car = car
         let navigationController = UINavigationController(rootViewController: addEditDetailsViewController)
         self.present(navigationController, animated: true) {
-            addEditDetailsViewController.completionHandler = { [weak self] car in
-                self?.cars.remove(at: indexPath.row)
-                self?.cars.insert(car, at: indexPath.row)
+            addEditDetailsViewController.completionHandler = { [weak self] in
+                self?.tableView.reloadData()
             }
         }
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let car = cars?[indexPath.row], editingStyle == .delete else { return }
+        car.delete()
+        self.tableView.reloadData()
     }
 }
 
@@ -90,4 +96,3 @@ extension CarsListViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
-
