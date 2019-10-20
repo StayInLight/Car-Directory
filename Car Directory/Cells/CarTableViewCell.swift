@@ -17,7 +17,7 @@ final class CarTableViewCell: UITableViewCell {
         didSet {
             self.manufacturerLabel.text  = self.car?.manufacturer
             self.modelLabel.text         = self.car?.model
-            self.yearOfReleaseLabel.text = String(self.car?.yearOfRelease ?? 0)
+            self.yearOfReleaseLabel.text = self.car?.yearOfRelease
             self.bodyTypeLabel.text      = self.car?.bodyType
         }
     }
