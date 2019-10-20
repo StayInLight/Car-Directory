@@ -27,42 +27,15 @@ final class AddEditDetailsViewController: UIViewController {
                                action: #selector(deleteBarButtonTapped))
     }()
     
-    private let manufacturerTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Manufacturer"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let yearOfReleaseTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Year of Release"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let modelTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Model"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
-    
-    private let bodyTypeTextField: UITextField = {
-        let textField = UITextField()
-        textField.adjustsFontSizeToFitWidth = true
-        textField.placeholder = "Enter Body Type"
-        textField.borderStyle = .roundedRect
-        return textField
-    }()
+    private let manufacturerTextField = TextField(placeholder: "Enter Manufacturer")
+    private let yearOfReleaseTextField = TextField(placeholder: "Enter Year of Release")
+    private let modelTextField = TextField(placeholder: "Enter Model")
+    private let bodyTypeTextField = TextField(placeholder: "Enter Body Type")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let car = self.car {
-            self.fetchDataFromModel(car)
+            self.fetch(car)
         }
     }
     
@@ -81,7 +54,7 @@ private extension AddEditDetailsViewController {
     func saveBarButtonTapped() {
         let car = Car()
         if textFieldsNotEmpty() {
-            self.addDataToModel(car)
+            self.create(car)
             dismiss(animated: true)
         } else {
             self.showAlertTextFieldsAreEmpty()
@@ -111,7 +84,7 @@ private extension AddEditDetailsViewController {
         return !manufacturerText && !yearOfReleaseText && !modelText && !bodyTypeText
     }
 
-    func addDataToModel(_ car: Car) {
+    func create(_ car: Car) {
         car.manufacturer  = self.manufacturerTextField.text
         car.yearOfRelease = self.yearOfReleaseTextField.text
         car.model = self.modelTextField.text
@@ -120,7 +93,7 @@ private extension AddEditDetailsViewController {
         self.completionHandler?()
     }
 
-    func fetchDataFromModel(_ car: Car) {
+    func fetch(_ car: Car) {
         self.manufacturerTextField.text = car.manufacturer
         self.yearOfReleaseTextField.text = car.yearOfRelease
         self.modelTextField.text = car.model

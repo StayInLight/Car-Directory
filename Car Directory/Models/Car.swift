@@ -19,6 +19,20 @@ class Car: Object {
     
 }
 
+extension Car {
+    convenience init(manufacturer: String?,
+                     yearOfRelease: String?,
+                     model: String?,
+                     bodyType: String?) {
+        
+        self.init()
+        self.manufacturer = manufacturer
+        self.yearOfRelease = yearOfRelease
+        self.model = model
+        self.bodyType = bodyType
+    }
+}
+
 //MARK: - CRUD
 extension Car {
     static func all(in realm: Realm = try! Realm()) -> Results<Car> {
@@ -40,4 +54,27 @@ extension Car {
             realm.delete(self)
         }
     }
+
+    static func createExampleCars() {
+        let car1 = Car(manufacturer: "Volvo",
+                       yearOfRelease: "1997",
+                       model: "XC90",
+                       bodyType: "Sedan")
+
+        let car2 = Car(manufacturer: "BMW",
+                       yearOfRelease: "2000",
+                       model: "M5",
+                       bodyType: "Sedan")
+
+        let car3 = Car(manufacturer: "LADA",
+                       yearOfRelease: "2001",
+                       model: "2109",
+                       bodyType: "Hatchback")
+
+        Car.add(car1)
+        Car.add(car2)
+        Car.add(car3)
+    }
 }
+
+
