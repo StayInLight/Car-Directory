@@ -22,22 +22,18 @@ final class CarTableViewCell: UITableViewCell {
 
     private let manufacturerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .left
+        label.numberOfLines = 0
         return label
     }()
 
     private let modelLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
     
     private let yearOfReleaseLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         label.textAlignment = .right
         label.numberOfLines = 0
         return label
@@ -47,7 +43,6 @@ final class CarTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
@@ -55,7 +50,6 @@ final class CarTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViews()
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -65,8 +59,8 @@ final class CarTableViewCell: UITableViewCell {
 
 }
 
+// MARK: - Setup UI
 private extension CarTableViewCell {
-
      func setupViews() {
         self.addSubview(self.manufacturerLabel)
         self.addSubview(self.modelLabel)
@@ -81,22 +75,21 @@ private extension CarTableViewCell {
 
         self.manufacturerLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
-            make.left.equalTo(self.safeAreaLayoutGuide).offset(16)
+            make.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset * 2)
             make.trailing.equalTo(self.modelLabel.snp.leading).offset(-defaultOffset)
         }
         self.yearOfReleaseLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
-            make.right.equalTo(self.safeAreaLayoutGuide).offset(-16)
+            make.right.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset * 2)
         }
         self.modelLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset)
             make.trailing.greaterThanOrEqualTo(self.yearOfReleaseLabel.snp.leading).offset(-defaultOffset)
         }
         self.bodyTypeLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.safeAreaLayoutGuide).offset(16)
+            make.left.equalTo(self.safeAreaLayoutGuide).offset(defaultOffset * 2)
             make.top.equalTo(self.manufacturerLabel.snp.bottom).offset(defaultOffset / 2)
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-defaultOffset)
         }
     }
-
 }
