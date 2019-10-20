@@ -26,6 +26,7 @@ final class CarsListViewController: UIViewController {
         self.cars = Car.all()
         self.setupTableView()
         self.setupNavigationBar()
+        self.tableView.reloadData()
     }
 
     @objc func addBarButtonTapped() {
@@ -95,7 +96,7 @@ private extension CarsListViewController {
             }
         }
     }
-    
+
     func edit(_ car: Car?) {
         let addEditDetailsViewController = AddEditDetailsViewController()
         addEditDetailsViewController.car = car
